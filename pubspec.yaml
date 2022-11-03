@@ -39,6 +39,9 @@ dependencies:
   get: ^4.6.5
   flutter_svg: ^1.1.6
   google_fonts: ^3.0.1
+  shared_preferences: ^2.0.15
+  fluttertoast: ^8.1.1
+  awesome_dialog: ^3.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
