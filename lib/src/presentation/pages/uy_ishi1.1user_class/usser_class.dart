@@ -20,7 +20,7 @@ class MyUserClass extends StatefulWidget {
 class _MyUserClassState extends State<MyUserClass> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  bool isObscure = false;
+  bool isObscure = true;
 
   @override
   void initState() {
@@ -45,11 +45,25 @@ class _MyUserClassState extends State<MyUserClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+            size: 30,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 60, right: 30, left: 30),
+              padding: const EdgeInsets.only(right: 30, left: 30),
               child: SvgPicture.asset(
                 AppIcons.welcomeBack,
                 height: 220,
@@ -157,21 +171,54 @@ class _MyUserClassState extends State<MyUserClass> {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.userAccountClass);
-                      },
-                      child: const Text(
-                        "Forget Password?",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          AwesomeDialog(
+                            context: context,
+                            animType: AnimType.leftSlide,
+                            headerAnimationLoop: false,
+                            dialogType: DialogType.question,
+                            showCloseIcon: true,
+                            title: 'Clear',
+                            desc: 'Email, Passoword',
+                            btnOkOnPress: () {
+                              _flutterToast("Email, Passoword, Clear", false);
+                              emailController.text = "";
+                              passwordController.text = "";
+                            },
+                            btnOkIcon: Icons.check_circle,
+                            btnOkColor: Colors.red,
+                          ).show();
+                        },
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.red,
+                        ),
+                        child: const Text(
+                          "Clear: Email,Paassword",
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.AccountClass);
+                        },
+                        child: const Text(
+                          "Forget Password?",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 12),
                   ElevatedButton(
@@ -186,6 +233,9 @@ class _MyUserClassState extends State<MyUserClass> {
                         desc: 'Email, Passoword',
                         btnCancelOnPress: () {
                           _flutterToast("Email, Passoword,No Saved", false);
+                          setState(() {
+                            emailController.text = "";
+                          });
                         },
                         btnOkOnPress: () {
                           debugPrint('OnClcik');

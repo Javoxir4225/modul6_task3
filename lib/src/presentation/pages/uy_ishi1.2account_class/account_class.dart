@@ -15,7 +15,7 @@ class MyAccauntClass extends StatefulWidget {
 }
 
 class _MyAccauntClassState extends State<MyAccauntClass> {
-  bool _isObscures = false;
+  bool _isObscures = true;
 
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -55,7 +55,7 @@ class _MyAccauntClassState extends State<MyAccauntClass> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 20, top: 15),
+          padding: const EdgeInsets.only(left: 16, top: 15),
           child: IconButton(
             onPressed: () {
               Get.back();
@@ -63,7 +63,7 @@ class _MyAccauntClassState extends State<MyAccauntClass> {
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
-              size: 28,
+              size: 30,
             ),
           ),
         ),
