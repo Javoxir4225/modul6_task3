@@ -102,12 +102,17 @@ class _MyMinyuState extends State<MyMinyu> with SingleTickerProviderStateMixin {
                       ..rotateY(
                         3.14 * (_animation2.value),
                       ),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 214, 215, 222),
-                        image: DecorationImage(
-                          image: AssetImage(
-                            AppImages.scrin2,
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.signin1);
+                      },
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 214, 215, 222),
+                          image: DecorationImage(
+                            image: AssetImage(
+                              AppImages.scrin2,
+                            ),
                           ),
                         ),
                       ),

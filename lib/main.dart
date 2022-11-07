@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:modul6_task3/routes/app_pages.dart';
 import 'package:modul6_task3/routes/app_rountes.dart';
@@ -23,6 +24,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData(
+        // textTheme: GoogleFonts.acmeTextTheme(),
+        textTheme: GoogleFonts.aliceTextTheme(),
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.minyu,
       getPages: AppPages.getPages,
